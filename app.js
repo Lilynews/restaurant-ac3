@@ -3,6 +3,8 @@ const express = require('express') //install express
 const app = express()
 const port = 3000
 const mongoose = require('mongoose')// install mongoose
+const exphbs = require('express-handlebars')
+
 
 
 //////// setting for DB connection 
@@ -22,10 +24,13 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
+//////// setting express-handlebars
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
 
 //////// setting routes
 app.get('/', (req, res) => {
-  res.send('yooo~~ A7 HW')
+  res.render('index')
 })
 
 //////// setting listening
