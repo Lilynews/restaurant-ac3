@@ -38,5 +38,13 @@
         src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5634/08.jpg" alt="布娜飛比利時啤酒餐廳"
         style="max-width: 600px;">
     </div>
+    <div class="m-4 text-center">
+      <a href="/restaurants/{{restaurant._id}}/edit" class="btn btn-warning" role="button">edit</a>
+    <form action="/restaurants/{{restaurant._id}}/delete" method="POST" style="display: inline;">
+      <button type="submit" class="btn btn-danger" onclick="return confirm('確定要刪除嗎?');">delete</button>
+    </form>
+      <a href="/" role="button" class="btn btn-secondary">back</a>
+    </div>
+
   </div>
 </div>
