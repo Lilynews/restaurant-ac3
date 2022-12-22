@@ -48,7 +48,16 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
     })
     .catch(error => console.log(error))
 })
-
+//search
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.trim()
+  const sort = req.query.sort
+  const regex = new RegExp(keyword, 'i')
+  RestaurantList.find({ $or: [{ name: { $regex: regex } }, { category: { $regex: regex } }] })
+    .lean()
+    .sort(sort)
+    .then(filteredRestaurants => res.render('index', { restaurants: filteredRestaurants, keyword, sort }))
+})
 
 
 /////// use public static files
