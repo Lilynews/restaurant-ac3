@@ -4,6 +4,7 @@ const app = express()
 const port = 3000
 const mongoose = require('mongoose')// install mongoose
 const exphbs = require('express-handlebars')
+const RestaurantList = require('./models/restaurants') // install restaurant model
 
 
 
@@ -29,8 +30,23 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 //////// setting routes
+// Home page
 app.get('/', (req, res) => {
-  res.render('index')
+  RestaurantList.find() // data from restaurant model
+    .lean() // data transfer to plain javascript object
+    .then(restaurants => res.render('index', { restaurants })) // send data to index and render
+    .catch(error => console.error(error)) // error handling
+})
+// show page
+app.get('/restaurants/:restaurant_id', (req, res) => {
+  const id = req.params.restaurant_id
+  return RestaurantList.findById(id)
+    .lean()
+    .then(restaurant => {
+      // console.log(restaurant._id)
+      res.render('show', { restaurant })
+    })
+    .catch(error => console.log(error))
 })
 
 
