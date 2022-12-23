@@ -108,3 +108,37 @@ header {
 .yooo {
   color: yellow;
 }
+
+.index-btn-detail {
+  background-color: #9b4b4b;
+  border-color: #9b4b4b;
+}
+
+.index-btn-edit,
+.show-btn-edit,
+.edit-btn-edit {
+  background-color: #FCE2CE;
+  border-color: #FCE2CE;
+}
+
+.new-card {
+  background-color: #3D5C6F;
+}
+
+.main-btn-add {
+  background-color: #799cb4;
+  border-color: #3D5C6F;
+  border-width: 2px;
+}
+
+.new-btn-send {
+  background-color: #799cb4;
+}
+
+.new-text {
+  color: #5a8aa0;
+}
+
+.edit-card {
+  background-color: #c55b0b;
+}
