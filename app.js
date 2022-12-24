@@ -33,7 +33,15 @@ app.engine('hbs', exphbs({
   helpers: {
     selected: (sortSelected) => {
       if (sortSelected) return "selected"
-    }
+    },
+
+  //   formInputNew: function (tag, show, type) {
+  //     return `<label for="${tag}">${show}</label>
+  //     <input type="${type}" id="${tag}" placeholder="${tag}" name="${tag}"><br>`
+  //   },
+  //   formInputNew2: function (value, option) {
+  //     return "<label>" + option.fn({myTypeis: type, myTagis: tag, myEnis: name_en}) +"</label>"
+  //   }
   }
 }))
 app.set('view engine', 'hbs')
