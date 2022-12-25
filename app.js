@@ -1,11 +1,16 @@
 //////// setting variable, file, 3rd-party-tool
 const express = require('express') //install express
-const app = express()
-const port = 3000
 const mongoose = require('mongoose')// install mongoose
 const exphbs = require('express-handlebars')
 const RestaurantList = require('./models/restaurants') // install restaurant model
 const bodyParser = require('body-parser') // install body-parser
+const methodOverride = require('method-override') // install method-override
+
+// 引入 express
+const app = express()
+const port = 3000
+// 引用路由器
+const routes = require('./routes')
 
 
 
@@ -48,8 +53,13 @@ app.set('view engine', 'hbs')
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
-/////// use public static files
+// use public static files
 app.use(express.static('public'))
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
+// 將 request 導入路由器
+app.use(routes)
+
 
 //////// setting routes
 // Home page
