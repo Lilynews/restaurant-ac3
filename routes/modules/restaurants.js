@@ -4,7 +4,7 @@ const RestaurantList = require('../../models/restaurants')
 
 // new page
 router.get('/new', (req, res) => {
-  res.render('new')
+  res.render('new', { title: 'Add New One' })
 })
 
 router.post('/', (req, res) => {
@@ -18,7 +18,7 @@ router.get('/:restaurant_id/edit', (req, res) => {
   const id = req.params.restaurant_id
   RestaurantList.findById(id)
     .lean()
-    .then(restaurant => res.render('edit', { restaurant }))
+    .then(restaurant => res.render('edit', { title: 'Edit Page', restaurant }))
     .catch(error => console.log(error))
 })
 
@@ -45,7 +45,7 @@ router.get('/:restaurant_id', (req, res) => {
     .lean()
     .then(restaurant => {
       // console.log(restaurant._id)
-      res.render('show', { restaurant })
+      res.render('show', { title: 'Show Page', restaurant })
     })
     .catch(error => console.log(error))
 })

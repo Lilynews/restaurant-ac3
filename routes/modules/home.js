@@ -22,9 +22,9 @@ router.get('/', (req, res) => {
       const searchResult = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.includes(keyword))
 
       if (!keyword) {
-        res.render('index', { restaurants, sortSelected })
+        res.render('index', { title: 'Foodie Bucket List', restaurants, sortSelected })
       } else {
-        res.render('index', { restaurants: searchResult, keyword, sortSelected })
+        res.render('index', { title: 'Foodie Bucket List', restaurants: searchResult, keyword, sortSelected })
       }
     })
     .catch(error => console.log(error))
