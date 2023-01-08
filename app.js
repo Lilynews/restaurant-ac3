@@ -3,7 +3,6 @@ const express = require('express') //install express
 const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
-const RestaurantList = require('./models/restaurants') // install restaurant model
 const bodyParser = require('body-parser') // install body-parser
 const methodOverride = require('method-override') // install method-override
 // 引用路由器
