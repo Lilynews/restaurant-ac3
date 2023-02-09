@@ -43,6 +43,14 @@ app.use(session({
 }))
 // 呼叫 passsport 並 app，在 express 裡使用
 usePassport(app)
+// 透過 middleware 將 req.isAuth 放入 response 裡面
+app.use((req, res, next) => {
+  // console.log(req.user)
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+
+  next()
+})
 
 // 將 request 導入路由器
 app.use(routes)
