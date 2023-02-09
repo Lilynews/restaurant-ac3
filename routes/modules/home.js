@@ -4,6 +4,7 @@ const RestaurantList = require('../../models/restaurants')
 
 // search & sort
 router.get('/', (req, res) => {
+  // search & sort
   const keyword = (req.query.keyword) ? req.query.keyword.trim() : ''
   const sort = req.query.sort || 'default'
   const sortBy = {
@@ -14,8 +15,10 @@ router.get('/', (req, res) => {
     location: { location: 'asc' }
   }
   const sortSelected = { [sort]: true }
+  // user has own foodie list
+  const userId = req.user._id
 
-  RestaurantList.find()
+  RestaurantList.find({ userId })
     .lean()
     .sort(sortBy[sort])
     .then(restaurants => {
