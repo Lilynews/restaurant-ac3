@@ -7,6 +7,10 @@ const bodyParser = require('body-parser') // install body-parser
 const methodOverride = require('method-override') // install method-override
 // 引用路由器
 const routes = require('./routes')
+// 引入登入 session 驗證
+const session = require('express-session')
+
+
 // app.js 檔案沒有要使用不用設定變數但還是需要設定 Mongoose 連線「被執行」
 require('./config/mongoose')
 
@@ -29,6 +33,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 // 用 app.use 規定每一筆請求都會透過 methodOverride 進行前置處理
 app.use(methodOverride('_method'))
+// 做 session 設定
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
+
 // 將 request 導入路由器
 app.use(routes)
 
