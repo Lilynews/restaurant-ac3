@@ -9,6 +9,8 @@ const methodOverride = require('method-override') // install method-override
 const routes = require('./routes')
 // 引入登入 session 驗證
 const session = require('express-session')
+// 引入 passport 策略驗證
+const usePassport = require('./config/passport')
 
 
 // app.js 檔案沒有要使用不用設定變數但還是需要設定 Mongoose 連線「被執行」
@@ -39,6 +41,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+// 呼叫 passsport 並 app，在 express 裡使用
+usePassport(app)
 
 // 將 request 導入路由器
 app.use(routes)
