@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../../models/user')
+const passport = require('passport')
 
 
 router.get('/login', (req, res) => {
@@ -28,6 +29,16 @@ router.post('/register', (req, res) => {
         .catch(err => console.log(err))
     }
   }).catch(err => console.log('POST: findOne error', err))
+})
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
+
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/users/login')
 })
 
 module.exports = router
