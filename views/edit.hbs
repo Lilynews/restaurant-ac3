@@ -3,7 +3,7 @@
     <form action="/restaurants/{{restaurant._id}}?_method=PUT" method="POST">
       {{!-- name --}}
       <div class="mb-3 row">
-        <label for="name" class="col-form-label col-2">名稱</label>
+        <label for="name" class="col-form-label col-2">Name</label>
         <div class="col-10">
           <input type="text" class="form-control" name="name" id="name" placeholder="吳留手-麗水店"
             value="{{restaurant.name}}" required>
@@ -11,16 +11,16 @@
       </div>
       {{!-- category --}}
       <div class="mb-3 row">
-        <label for="category" class="col-form-label col-2">類別</label>
+        <label for="category" class="col-form-label col-2">Category</label>
         <div class="col-10">
           <select name="category" id="category" class="form-select" aria-label="Default select example"
             value="{{restaurant.category}}">
-            <option>中東料理</option>
-            <option>日本料理</option>
-            <option>義式餐廳</option>
-            <option>美式</option>
-            <option>酒吧</option>
-            <option>咖啡</option>
+            <option>Middle Eastern Cuisine</option>
+            <option>Japanese cuisine</option>
+            <option>Italian restaurant</option>
+            <option>American restaurant</option>
+            <option>Bar</option>
+            <option>coffee shop</option>
           </select>
         </div>
       </div>
@@ -34,7 +34,7 @@
       </div>
       {{!-- location --}}
       <div class="mb-3 row">
-        <label for="location" class="col-form-label col-2">地址</label>
+        <label for="location" class="col-form-label col-2">Address</label>
         <div class="col-10">
           <input type="text" class="form-control" name="location" id="location" placeholder="台北市大安區麗水街 5-9 號"
             value="{{restaurant.location}}" required>
@@ -42,7 +42,7 @@
       </div>
       {{!-- phone --}}
       <div class="mb-3 row">
-        <label for="phone" class="col-form-label col-2">電話</label>
+        <label for="phone" class="col-form-label col-2">Phone</label>
         <div class="col-10">
           <input type="text" class="form-control" name="phone" id="phone" placeholder="02 2396 0680"
             value="{{restaurant.phone}}" required>
@@ -58,7 +58,7 @@
       </div>
       {{!-- rating --}}
       <div class="mb-3 row">
-        <label for="rating" class="col-form-label col-2">評分</label>
+        <label for="rating" class="col-form-label col-2">Rating</label>
         <div class="col-10">
           <input type="text" class="form-control" name="rating" id="rating" placeholder="4.9"
             value="{{restaurant.rating}}" required>
@@ -66,7 +66,7 @@
       </div>
       {{!-- description --}}
       <div class="mb-3 row">
-        <label for="description" class="col-sm-2 col-form-label">餐廳描述</label>
+        <label for="description" class="col-sm-2 col-form-label">Description</label>
         <div class="col-sm-10">
           <input type="text" name="description" class="form-control" id="description" rows="6"
             value="{{restaurant.description}}" required></input>
