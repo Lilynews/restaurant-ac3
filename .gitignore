@@ -10,3 +10,6 @@ node_modules
 
 # dotenv
 .env
+
+#text
+test.text
