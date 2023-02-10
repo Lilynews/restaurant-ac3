@@ -2,17 +2,13 @@
   {
     "name": "user1",
     "email": "user1@example.com",
-    "password": 123,
-    "restaurantId": ["63e4fc62910f535dabaf429e", "63e4fc62910f535dabaf429f", "63e4fc62910f535dabaf42a0"]
+    "password": "12345678",
+    "restaurantIndex": [0, 1, 2, 3]
   },
   {
     "name": "user2",
     "email": "user2@example.com",
-    "password": 123,
-    "restaurantId": [
-      "63e4fc62910f535dabaf42a1",
-      "63e4fc62910f535dabaf42a2",
-      "63e4fc62910f535dabaf42a3"
-    ]
+    "password": "12345678",
+    "restaurantIndex": [4, 5, 6, 7]
   }
 ]
