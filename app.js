@@ -11,6 +11,12 @@ const routes = require('./routes')
 const session = require('express-session')
 // 引入 passport 策略驗證
 const usePassport = require('./config/passport')
+// 引入 flash
+const flash = require('connect-flash') 
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 
 // app.js 檔案沒有要使用不用設定變數但還是需要設定 Mongoose 連線「被執行」
@@ -37,17 +43,22 @@ app.use(express.static('public'))
 app.use(methodOverride('_method'))
 // 做 session 設定
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
 // 呼叫 passsport 並 app，在 express 裡使用
 usePassport(app)
+app.use(flash())
 // 透過 middleware 將 req.isAuth 放入 response 裡面
 app.use((req, res, next) => {
+  // middleware for isAuth 
   // console.log(req.user)
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+  // middleware for flash
+  res.locals.success_msg = req.flash('success_msg')  
+  res.locals.warning_msg = req.flash('warning_msg') 
 
   next()
 })
