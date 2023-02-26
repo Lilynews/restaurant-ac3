@@ -13,11 +13,11 @@ module.exports = app => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
-          return done(null, false, req.flash('error', '快看你的小筆記，查查 email or passport 是不是錯了！'))
+          return done(null, false, req.flash('error', '快看你的小筆記，查查 email or password 是不是錯了！'))
         }
         return bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
-            return done(null, false, req.flash('error', '快看你的小筆記，查查 email or passport 是不是錯了！'))
+            return done(null, false, req.flash('error', '快看你的小筆記，查查 email or password 是不是錯了！'))
           }
           return done(null, user)
         })
